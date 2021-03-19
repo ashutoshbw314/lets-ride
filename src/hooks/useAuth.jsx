@@ -24,7 +24,7 @@ function useProvideAuth() {
 
   // Wrap any Firebase methods we want to use making sure ...
   // ... to save the user to state.
-  const signin = (email, password) => {
+  const signIn = (email, password) => {
     return firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -33,7 +33,12 @@ function useProvideAuth() {
       });
   };
 
-  const signup = (email, password) => {
+  const rememberMe = (yesOrNo) => {
+    return firebase.auth().setPersistence(yesOrNo ? firebase.auth.Auth.Persistence.LOCAL : 
+                                                    firebase.auth.Auth.Persistence.SESSION);
+  }
+
+  const signUp = (email, password) => {
     return firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
@@ -43,7 +48,7 @@ function useProvideAuth() {
       });
   };
 
-  const signout = () => {
+  const signOut = () => {
     return firebase
       .auth()
       .signOut();
@@ -60,10 +65,7 @@ function useProvideAuth() {
 
   const sendEmailVerification = () => {
     return firebase.auth().currentUser
-      .sendEmailVerification()
-      .then(() => {
-        console.log('An verification email sent');
-      });
+      .sendEmailVerification();
   };
 
   const confirmPasswordReset = (code, password) => {
@@ -91,6 +93,12 @@ function useProvideAuth() {
       })
   };
 
+  const socialSignIn = media => {
+    if (media == 'google') return signInWithGoogle();
+    else if (media == 'facebook') return signInWithFacebook();
+    else return null;
+  }
+
   // Subscribe to user on mount
   // Because this sets state in the callback it will cause any ...
   // ... component that utilizes this hook to re-render with the ...
@@ -106,14 +114,13 @@ function useProvideAuth() {
 
   // Return the user object and auth methods
   return {
-    //get user() { return firebase.auth().currentUser; },
     user,
-    signin,
-    signup,
-    signout,
+    signIn,
+    rememberMe,
+    signUp,
+    signOut,
     sendPasswordResetEmail,
     confirmPasswordReset,
-    signInWithGoogle,
-    signInWithFacebook
+    socialSignIn
   };
 }
