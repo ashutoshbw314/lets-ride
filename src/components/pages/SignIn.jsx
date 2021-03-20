@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
+import googleLogo from '../../images/google-logo.svg';
 
 function SignIn(props) {
   const schema = yup.object().shape({
@@ -62,7 +63,7 @@ function SignIn(props) {
                 type="text"
                 placeholder="Enter your email address"
               />
-              {false && errors.email && <span>{errors.email.message}</span>}<br />
+              {errors.email && <p className='px-2 text-sm text-red-500'>{errors.email.message}</p>}
             </label>
             <label className='block'>
               <span className='text-sm font-medium text-gray-700'>Password</span>
@@ -73,7 +74,7 @@ function SignIn(props) {
                 type="password"
                 placeholder="Enter your password"
               />
-              {false && errors.password && <span>{errors.password.message}</span>}<br />
+              {errors.password && <p className='px-2 text-sm text-red-500'>{errors.password.message}</p>}
             </label>
             <label className='flex items-center cursor-pointer'>
               <input
@@ -93,7 +94,7 @@ function SignIn(props) {
               <Link to='/forgot-password' className='text-sm hover:underline'>Forgot password?</Link>
             </div>
             <input
-              className='inline-block px-8 py-3 rounded-lg transform transition bg-indigo-500 hover:bg-indigo-600 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 uppercase tracking-wider font-semibold text-sm text-white shadow sm:text-base cursor-pointer w-full'
+              className='inline-block py-3 rounded-lg transform transition bg-indigo-500 hover:bg-indigo-600 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 uppercase tracking-wider font-semibold text-sm text-white shadow sm:text-base cursor-pointer w-full'
               type='submit'
               value='Login'/>
             <p className='text-center'>
@@ -101,10 +102,19 @@ function SignIn(props) {
             </p>
           </form>
         </div>
+        <div className='flex items-center justify-center w-full my-3'>
+          <hr className='inline-block w-full ml-12 mr-1 border-gray-300'/>
+          <span>Or</span>
+          <hr className='inline-block w-full ml-1 mr-12 border-gray-300' />
+        </div>
+        <div 
+          className='block py-1 rounded-full transform transition border border-indigo-300  hover:bg-gray-100 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 tracking-wider text-sm text-gray-700 shadow cursor-pointer w-3/4 mx-auto text-sm flex items-center justify-between font-semibold'
+          onClick={() => socialSignIn('google')}
+        >
+          <img className='ml-1 justify-self-start w-9' src={googleLogo} alt='google logo' />
+          <p className='w-full text-center'>Continue with Google</p>
+        </div>
       </div>
-      <hr />
-      <button onClick={() => socialSignIn('google')}>Sign in with Google</button><br />
-      <button onClick={() => socialSignIn('facebook')}>Sign in with Facebook</button><br />
     </div>
   );
 }

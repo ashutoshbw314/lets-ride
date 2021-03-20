@@ -10,7 +10,12 @@ function App() {
   return (
     <ProvideAuth>
       <Router>
-        <Route path='/login' component={SignIn} />
+        <Switch>
+          <Route exact path='/'>
+            <h1>hello Home page</h1>
+          </Route>
+          <Route path='/login' component={SignIn} />
+        </Switch>
       </Router>
     </ProvideAuth>
   )
