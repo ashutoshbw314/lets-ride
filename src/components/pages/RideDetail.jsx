@@ -6,6 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import NavBar from '../sections/NavBar';
 import rides from '../../data/rides';
 import userLogo from '../../images/user.svg';
+import mapPhoto from '../../images/Map.png';
 
 function MyRide({vehicle}) {
   const schema = yup.object().shape({
@@ -131,8 +132,8 @@ function MyRide({vehicle}) {
             </div>
         }
       </div>
-      <div className='bg-pink-100 2xl:col-span-4 lg:col-span-2'>
-        MAP
+      <div id='map' className='bg-pink-100 2xl:col-span-4 lg:col-span-2'>
+        <img className='w-96' src={mapPhoto} />
       </div>
 
     </div>
