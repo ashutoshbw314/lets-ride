@@ -1,7 +1,7 @@
 export default [
   {
     vehicle: 'bike',
-    thumbnail: '/img/motor-cycle.jpg',
+    thumbnail: '/img/bike.jpg',
   },
   {
     vehicle: 'car',
