@@ -1,18 +1,18 @@
 export default [
   {
     vehicle: 'bike',
-    thumbnail: null,
+    thumbnail: '/img/motor-cycle.jpg',
   },
   {
     vehicle: 'car',
-    thumbnail: null
+    thumbnail: '/img/car.jpg'
   },
   {
     vehicle: 'bus',
-    thumbnail: null
+    thumbnail: '/img/bus.jpg'
   },
   {
     vehicle: 'train',
-    thumbnail: null
+    thumbnail: '/img/train.jpg'
   },
 ];

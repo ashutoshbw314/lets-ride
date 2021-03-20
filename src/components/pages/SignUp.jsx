@@ -55,8 +55,8 @@ function SignUp(props) {
   return (
     <div>
       <NavBar />
-      <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
-        <div className='px-6 py-8 bg-white rounded-lg shadow sm:px-10'>
+      <div className='mt-8 mb-4 sm:mx-auto sm:w-full sm:max-w-md'>
+        <div className='px-6 py-8 bg-white rounded-lg shadow bg-opacity-90 sm:px-10'>
           <h1 className='mb-5 text-2xl font-bold text-indigo-600'>Create an account</h1>
           <form className='space-y-3' onSubmit={handleSubmit(onSubmit)}>
             <label className='block'>
@@ -111,11 +111,11 @@ function SignUp(props) {
         </div>
         <div className='flex items-center justify-center w-full my-3'>
           <hr className='inline-block w-full ml-12 mr-1 border-gray-300'/>
-          <span>Or</span>
+          <span className='text-white'>Or</span>
           <hr className='inline-block w-full ml-1 mr-12 border-gray-300' />
         </div>
         <div 
-          className='block py-1 rounded-full transform transition border border-indigo-300  hover:bg-gray-100 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 tracking-wider text-sm text-gray-700 shadow cursor-pointer w-3/4 mx-auto text-sm flex items-center justify-between font-semibold'
+          className='block bg-white bg-opacity-75 py-1 rounded-full transform transition border border-indigo-300  hover:bg-gray-100 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 tracking-wider text-sm text-gray-700 shadow cursor-pointer w-3/4 mx-auto text-sm flex items-center justify-between font-semibold'
           onClick={() => socialSignIn('google')}
         >
           <img className='ml-1 justify-self-start w-9' src={googleLogo} alt='google logo' />

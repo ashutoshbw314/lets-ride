@@ -19,7 +19,7 @@ function App() {
             <SignIn /> 
           </ReversedPrivateRoute>
           <Route exact path='/signup' component={SignUp} />
-          <PrivateRoute exact path='/:vehicle'>
+          <PrivateRoute exact path='/rides/:vehicle'>
             <RideDetail />
           </PrivateRoute>
         </Switch>
