@@ -4,22 +4,13 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="src/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
     <title>Vite App</title>
   </head>
   <body class='bg-cover bg-hero-image'>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-<script>
-let map;
-
-function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -34.397, lng: 150.644 },
-    zoom: 8,
-  });
-}
-</script>
-  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDqVEjeLEXMV8n6AFN4Hkfeh0g8WXuP_RE&callback=initMap"
-  type="text/javascript"></script>
   </body>
 </html>

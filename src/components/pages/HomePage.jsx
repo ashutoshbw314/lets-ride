@@ -16,7 +16,7 @@ function HomePage() {
       <div className='max-w-md px-8 py-8 mx-auto sm:max-w-xl lg:max-w-6xl lg:px-12'>
         <h2 className='text-3xl text-gray-100'>Available rides</h2>
         <p className='mt-3 text-xl text-white'>Choose a ride below to see more info:</p>
-        <div className='mt-6 grid gap-6 lg:grid-cols-2 xl:grid-cols-3'>
+        <div className='mt-6 grid gap-6 lg:grid-cols-2 xl:grid-cols-4'>
           {
             rides.map((ride, i) => 
               <Link key={i} to={'/rides/' + ride.vehicle}>

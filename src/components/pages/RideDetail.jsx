@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import NavBar from '../sections/NavBar';
 import rides from '../../data/rides';
 import userLogo from '../../images/user.svg';
-import mapPhoto from '../../images/Map.png';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 function MyRide({vehicle}) {
   const schema = yup.object().shape({
@@ -102,7 +102,6 @@ function MyRide({vehicle}) {
                 </ul>
               </div>
               <div>
-                {console.log(result.details)}
                 {
                   result.details.map((info, i) => {
                     return <div key={i} className='mb-3 grid grid-cols-3'>
@@ -132,8 +131,18 @@ function MyRide({vehicle}) {
             </div>
         }
       </div>
-      <div id='map' className='bg-pink-100 2xl:col-span-4 lg:col-span-2'>
-        <img className='w-96' src={mapPhoto} />
+      <div className='bg-pink-100 2xl:col-span-4 lg:col-span-2'>
+        <MapContainer className='w-full h-full' center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          <Marker position={[51.505, -0.09]}>
+            <Popup>
+              A pretty CSS3 popup. <br /> Easily customizable.
+            </Popup>
+          </Marker>
+        </MapContainer>
       </div>
 
     </div>
