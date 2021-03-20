@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuth } from "../../hooks/useAuth";
+import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -7,8 +8,12 @@ import { Link } from 'react-router-dom';
 import googleLogo from '../../images/google-logo.svg';
 import NavBar from '../sections/NavBar.jsx';
 
-function SignIn(props) {
+function SignUp(props) {
   const schema = yup.object().shape({
+    name: yup.
+      string().
+      trim().
+      required('Name is a required field'),
     email: yup.
       string().
       trim().
@@ -20,49 +25,56 @@ function SignIn(props) {
       matches(
         /^[^\s]{6,}$/, 
         'Password must be composed of at least 6 non blank characters'
-      )
+      ),
+    passwordConfirmation: yup.string()
+     .oneOf([yup.ref('password'), null], 'Passwords must match')
   });
+
+  const auth = useAuth();
+  const history = useHistory();
 
   const {register, handleSubmit, errors} = useForm({
     mode: 'onTouched',
     resolver: yupResolver(schema),
   });
 
-  const auth = useAuth();
 
   const onSubmit = async data => {
     try {
-      await auth.signIn(data.email, data.password);
+      const user = await auth.signUp(data.email, data.password);
+      await user.updateProfile({
+        displayName: data.name
+      });
+      history.push('/')
     } catch (error) {
       console.log(error.message)
     }
-  };
 
-  const socialSignIn = async medium => {
-    try {
-      await auth.socialSignIn(medium);
-    } catch (error) {
-      console.log(error.message)
-    }
-  }
+  };
 
   return (
     <div>
       <NavBar />
       <div className='mt-8 sm:mx-auto sm:w-full sm:max-w-md'>
         <div className='px-6 py-8 bg-white rounded-lg shadow sm:px-10'>
-          <h1 className='mb-5 text-2xl font-bold text-indigo-600'>Login</h1>
-          <form 
-            className='space-y-3'
-            onSubmit={handleSubmit(onSubmit)}
-          >
+          <h1 className='mb-5 text-2xl font-bold text-indigo-600'>Create an account</h1>
+          <form className='space-y-3' onSubmit={handleSubmit(onSubmit)}>
             <label className='block'>
-              <span className='text-sm font-medium text-gray-700'>Email Address</span>
-              <input 
-                className=''
-                name="email"
+              <span className='text-sm font-medium text-gray-700'>Full name</span>
+              <input
                 ref={register}
                 type="text"
+                name="name"
+                placeholder="Enter your full name"
+              />
+              {errors.name && <p className='px-2 text-sm text-red-500'>{errors.name.message}</p>}
+            </label>
+            <label className='block'>
+              <span className='text-sm font-medium text-gray-700'>Email address</span>
+              <input
+                ref={register}
+                type="text"
+                name="email"
                 placeholder="Enter your email address"
               />
               {errors.email && <p className='px-2 text-sm text-red-500'>{errors.email.message}</p>}
@@ -70,30 +82,30 @@ function SignIn(props) {
             <label className='block'>
               <span className='text-sm font-medium text-gray-700'>Password</span>
               <input
-                className=''
-                name="password"
-                ref={register}
+                ref={register} 
                 type="password"
+                name="password"
                 placeholder="Enter your password"
               />
               {errors.password && <p className='px-2 text-sm text-red-500'>{errors.password.message}</p>}
             </label>
-            <div className='flex items-baseline justify-between'>
-              <label className='flex items-center cursor-pointer'>
-                <input
-                  className='' 
-                  type='checkbox' 
-                />
-                <span className='ml-2 text-sm text-gray-900'>Remember me</span>
-              </label>
-              <Link to='/forgot-password' className='text-sm text-indigo-500 hover:underline'>Forgot password?</Link>
-            </div>
+            <label className='block'>
+              <span className='text-sm font-medium text-gray-700'>Confirm password</span>
+              <input
+                ref={register} 
+                type="password"
+                name="passwordConfirmation"
+                placeholder="Enter your password again"
+              />
+              {errors.passwordConfirmation && <p className='px-2 text-sm text-red-500'>{errors.passwordConfirmation.message}</p>}
+            </label>
             <input
-              className='block py-3 rounded-lg transform transition bg-indigo-500 hover:bg-indigo-600 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 uppercase tracking-wider font-semibold text-sm text-white shadow sm:text-base cursor-pointer w-full'
-              type='submit'
-              value='Login'/>
+              className='py-3 rounded-lg transform transition bg-indigo-500 hover:bg-indigo-600 hover:-translate-y-0.5 focus:ring-indigo-500 focus:ring-opacity-50 focus:outline-none focus:ring focus:ring-offset-2 uppercase tracking-wider font-semibold text-sm text-white shadow sm:text-base cursor-pointer w-full block'
+              type="submit"
+              value="Create an account"
+            />
             <p className='text-center'>
-              <span className='text-sm'>Don't have an account?</span> <Link className='ml-1 text-indigo-500 hover:underline' to='/signup'>Create an account</Link>
+              <span className='text-sm'>Already have an account?</span> <Link className='ml-1 text-indigo-500 hover:underline' to='/login'>Login</Link>
             </p>
           </form>
         </div>
@@ -114,5 +126,4 @@ function SignIn(props) {
   );
 }
 
-export default SignIn;
-
+export default SignUp;
