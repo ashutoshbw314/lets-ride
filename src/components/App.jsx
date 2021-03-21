@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { ProvideAuth } from '../hooks/useAuth';
 import PrivateRoute from '../routes/PrivateRoute';
 import ReversedPrivateRoute from '../routes/ReversedPrivateRoute';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import HomePage from './pages/HomePage';
-import RideDetail from './pages/RideDetail';
+import SignInPage from './SignInPage/SignInPage';
+import SignUpPage from './SignUpPage/SignUpPage';
+import HomePage from './HomePage/HomePage';
+import RideDetailPage from './RideDetailPage/RideDetailPage';
 
 
 function App() {
@@ -16,11 +16,11 @@ function App() {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <ReversedPrivateRoute exact path='/login'>
-            <SignIn /> 
+            <SignInPage /> 
           </ReversedPrivateRoute>
-          <Route exact path='/signup' component={SignUp} />
+          <Route exact path='/signup' component={SignUpPage} />
           <PrivateRoute exact path='/rides/:vehicle'>
-            <RideDetail />
+            <RideDetailPage />
           </PrivateRoute>
         </Switch>
       </Router>

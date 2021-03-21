@@ -1,11 +1,8 @@
 import React, {useState} from 'react';
-import { useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import NavBar from '../sections/NavBar';
-import rides from '../../data/rides';
-import userLogo from '../../images/user.svg';
+import userLogo from '/img/logos/user.svg';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 
 function MyRide({vehicle}) {
@@ -108,7 +105,7 @@ function MyRide({vehicle}) {
                       <div className='items-center grid grid-cols-2'>
                         <img className='rounded-full w-14' src={result.thumbnail}/>
                         <p className='ml-2'>
-                          {result.vehicle}
+                          {result.vehicle[0].toUpperCase() + result.vehicle.slice(1)}
                         </p>
                       </div>
                       <div className='items-center grid grid-cols-2'>
@@ -144,29 +141,8 @@ function MyRide({vehicle}) {
           </Marker>
         </MapContainer>
       </div>
-
     </div>
   )
 }
 
-function RideNotFoundSection() {
-  const {vehicle} = useParams();
-  return (
-    <div>
-      <h1 className='py-4 m-8 text-3xl text-center text-gray-600 bg-pink-200 rounded-lg'>Sorry no rides availabe for {vehicle}</h1>
-    </div>
-  );
-}
-
-function RideDetail() {
-  const {vehicle} = useParams();
-  const rideAvailable = rides.map(ride => ride.vehicle).includes(vehicle);
-  return (
-    <div>
-      <NavBar />
-      {rideAvailable ? <MyRide vehicle={vehicle}/> : <RideNotFoundSection />}
-    </div>
-  )
-}
-
-export default RideDetail;
+export default MyRide;

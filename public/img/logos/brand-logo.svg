@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="170mm"
+   height="170mm"
+   version="1.1"
+   viewBox="0 0 170 170"
+   id="svg16"
+   sodipodi:docname="brand-logo.svg"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)">
+  <defs
+     id="defs20" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
+     id="namedview18"
+     showgrid="false"
+     inkscape:zoom="0.29468761"
+     inkscape:cx="550.7998"
+     inkscape:cy="401.60949"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg16" />
+  <metadata
+     id="metadata2">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <path
+     d="M 45.694912,111.49976 C 122.5241,249.63509 243.72863,47.217544 85.696249,44.696834 -72.337254,42.172706 42.339623,248.35739 123.5427,112.74356 204.74484,-22.863906 -31.135187,-26.634906 45.694796,111.50055 Z"
+     fill="none"
+     stroke="#000000"
+     stroke-miterlimit="3.4"
+     stroke-width="5.99999"
+     id="path4"
+     style="fill:#ffffff" />
+  <text
+     transform="scale(0.9984163,1.0015862)"
+     x="83.586311"
+     y="108.70083"
+     fill="#000000"
+     font-family="Waree"
+     font-size="67.6099px"
+     letter-spacing="-2.23983px"
+     stroke-width="0.264584"
+     text-align="center"
+     text-anchor="middle"
+     word-spacing="0px"
+     style="line-height:1.25"
+     xml:space="preserve"
+     id="text14"><tspan
+       x="82.466393"
+       y="108.70083"
+       fill="#000000"
+       font-family="Dyuthi"
+       font-size="67.6099px"
+       stroke-width="0.264584"
+       id="tspan12">LR</tspan></text>
+</svg>

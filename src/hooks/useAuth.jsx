@@ -1,3 +1,5 @@
+// The following codes is inspired by https://usehooks.com/useAuth/
+
 import React, { useState, useEffect, useContext, createContext } from "react";
 import firebase from '../firebase';
 

@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useAuth } from "../../hooks/useAuth";
 import { useHistory } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
-import googleLogo from '../../images/google-logo.svg';
-import NavBar from '../sections/NavBar.jsx';
+import googleLogo from '/img/logos/google-logo.svg';
+import NavBar from '../shared-components/NavBar/NavBar.jsx';
 
-function SignUp(props) {
+function SignUp() {
   const schema = yup.object().shape({
     name: yup.
       string().

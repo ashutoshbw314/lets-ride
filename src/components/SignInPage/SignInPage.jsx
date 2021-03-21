@@ -4,10 +4,10 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
-import googleLogo from '../../images/google-logo.svg';
-import NavBar from '../sections/NavBar.jsx';
+import googleLogo from '/img/logos/google-logo.svg';
+import NavBar from '../shared-components/NavBar/NavBar';
 
-function SignIn(props) {
+function SignIn() {
   const schema = yup.object().shape({
     email: yup.
       string().

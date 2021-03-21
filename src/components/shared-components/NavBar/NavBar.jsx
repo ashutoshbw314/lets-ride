@@ -1,8 +1,8 @@
 import React from 'react';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../../hooks/useAuth';
 import { Link } from 'react-router-dom';
-import userLogo from '../../images/user.svg';
-import brandLogo from '../../images/brand-logo.svg';
+import userLogo from '/img/logos/user.svg';
+import brandLogo from '/img/logos/brand-logo.svg';
 import { useHistory } from 'react-router-dom';
 
 function NavBar(props) {
@@ -22,7 +22,7 @@ function NavBar(props) {
       <header className='flex flex-wrap items-center px-6 py-2 bg-white bg-opacity-80 lg:px-6 lg:py-0'>
         <div className='flex items-center justify-between flex-1'>
           <Link to='/'>
-            <img src={brandLogo} className='w-12 pt-5' />
+            <img src={brandLogo} className='w-12 py-1' />
           </Link>
         </div>
 
