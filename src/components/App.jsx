@@ -7,6 +7,9 @@ import SignInPage from './SignInPage/SignInPage';
 import SignUpPage from './SignUpPage/SignUpPage';
 import HomePage from './HomePage/HomePage';
 import RideDetailPage from './RideDetailPage/RideDetailPage';
+import Destination from './Destination/Destination';
+import Contact from './Contact/Contact';
+import Blog from './Blog/Blog';
 
 
 function App() {
@@ -15,6 +18,9 @@ function App() {
       <Router>
         <Switch>
           <Route exact path='/' component={HomePage} />
+          <Route exact path='/destination' component={Destination} />
+          <Route exact path='/blog' component={Blog} />
+          <Route exact path='/contact' component={Contact} />
           <ReversedPrivateRoute exact path='/login'>
             <SignInPage /> 
           </ReversedPrivateRoute>
