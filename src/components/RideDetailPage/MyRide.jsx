@@ -51,8 +51,8 @@ function MyRide({vehicle}) {
   }
 
   return (
-    <div className='max-w-md px-8 py-8 mx-auto sm:max-w-xl lg:px-8 lg:py-8 lg:max-w-full xl:mr-0 2xl:col-span-2 grid lg:grid-cols-3 2xl:grid-cols-5 gap-3'>
-      <div className='px-6 py-8 bg-white rounded-lg shadow bg-opacity-90 sm:px-10 lg:col-span-1 2xl:col-span-1'>
+    <div className='w-full px-8 py-8 mx-auto lg:max-w-md grid-rows-2 lg:max-w-6xl gap-2 lg:px-12 grid lg:grid-cols-4'>
+      <div className='float-left px-6 py-8 bg-white rounded-lg shadow row-span-1 bg-opacity-90 sm:px-10 lg:col-span-1'>
         {
           result === null ? 
             <form
@@ -128,7 +128,7 @@ function MyRide({vehicle}) {
             </div>
         }
       </div>
-      <div className='bg-pink-100 2xl:col-span-4 lg:col-span-2'>
+      <div className='lg:col-span-3 row-span-1'>
         <MapContainer className='w-full h-full' center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
           <TileLayer
             attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
