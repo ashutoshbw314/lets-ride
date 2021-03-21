@@ -7,6 +7,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
 import googleLogo from '/img/logos/google-logo.svg';
 import NavBar from '../shared-components/NavBar/NavBar.jsx';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignUp() {
   const schema = yup.object().shape({
@@ -47,14 +49,31 @@ function SignUp() {
       });
       history.push('/')
     } catch (error) {
-      console.log(error.message)
+      toast.error(error.message, {
+        position: "bottom-left",
+        autoClose: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
-
   };
 
   return (
     <div>
       <NavBar />
+      <ToastContainer
+        position="bottom-left"
+        autoClose={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
+
       <div className='mt-8 mb-4 sm:mx-auto sm:w-full sm:max-w-md'>
         <div className='px-6 py-8 bg-white rounded-lg shadow bg-opacity-90 sm:px-10'>
           <h1 className='mb-5 text-2xl font-bold text-indigo-600'>Create an account</h1>

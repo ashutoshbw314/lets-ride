@@ -6,6 +6,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Link } from 'react-router-dom';
 import googleLogo from '/img/logos/google-logo.svg';
 import NavBar from '../shared-components/NavBar/NavBar';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function SignIn() {
   const schema = yup.object().shape({
@@ -34,7 +36,15 @@ function SignIn() {
     try {
       await auth.signIn(data.email, data.password);
     } catch (error) {
-      console.log(error.message)
+      toast.error(error.message, {
+        position: "bottom-left",
+        autoClose: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
 
@@ -42,12 +52,30 @@ function SignIn() {
     try {
       await auth.socialSignIn(medium);
     } catch (error) {
-      console.log(error.message)
+      toast.error(error.message, {
+        position: "bottom-left",
+        autoClose: false,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   }
 
   return (
     <div>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
+
       <NavBar />
       <div className='mt-8 mb-4 sm:mx-auto sm:w-full sm:max-w-md'>
         <div className='px-6 py-8 bg-white rounded-lg shadow bg-opacity-90 sm:px-10'>
